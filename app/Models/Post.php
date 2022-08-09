@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ApiTrait;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, ApiTrait;
+
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     const BORRADOR = 1;
     const PUBLICADO = 2;

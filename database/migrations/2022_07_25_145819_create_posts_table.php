@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('extract');
             $table->longText('body');
-            $table->enum('estatus',[Post::BORRADOR,Post::PUBLICADO])->default(Post::BORRADOR);
+            $table->enum('status',[Post::BORRADOR,Post::PUBLICADO])->default(Post::BORRADOR);
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
